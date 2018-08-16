@@ -16,8 +16,8 @@ namespace Presentation.Web
             );
 
             config.Routes.MapHttpRoute(
-                name:"NestedResources"
-                //routeTemplate: "api/{controller}/{id}/{action}"
+                name:"NestedResources",
+                routeTemplate: "api/{controller}/{id}/{action}"
                 );
 
             var appXmlType =
