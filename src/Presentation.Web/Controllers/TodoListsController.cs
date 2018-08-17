@@ -72,11 +72,7 @@ namespace Presentation.Web.Controllers
         {
             var list = _repo.Get(Id);
             return
-<<<<<<< HEAD
-                list.Todos.Select(t => new TodoDisplay() { Id = t.Id, Title = t.Title, Completed = t.Completed });
-=======
                 list.Todos.Select(t => new TodoDisplay() {Id = t.Id, Title = t.Title, Completed = t.Completed });
->>>>>>> c
             ;
         }
     }

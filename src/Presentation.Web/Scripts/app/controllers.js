@@ -20,7 +20,6 @@
     controller("ListsCtrl", ["$scope", "TodoList", 'orderByFilter', function ($scope, TodoList, orderBy) {
 
         var self = this;
-        //console.log('$localStorage', $localStorage);
 
         $scope.$on('list:deleted', function() {
             self.setLists();
@@ -45,13 +44,11 @@
                         var key = rowIndex.toString() + colIndex.toString();
                         var reverse = window.localStorage.getItem(key) || 'false';
                         reverse = reverse == 'true' ? true : false;
-                        
                         $scope.lists[rowIndex].row[colIndex].Todos = orderBy($scope.lists[rowIndex].row[colIndex].Todos, 'Title', reverse);
-
                         colIndex++;
                     });
-
                     rowIndex++;
+                    colIndex = 0;
                 });
             });
 

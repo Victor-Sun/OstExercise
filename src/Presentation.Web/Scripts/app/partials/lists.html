@@ -11,7 +11,7 @@
             <form name="addTodoForm" class="form-inline" ng-submit="addTodo(Title)">
                 <input type="text" ng-model="Title" placeholder="Pick up the milk" give-focus required />
                 <button type="submit" class="btn btn-success">Add Todo</button>
-                <button type="button" class="btn btn-default" ng-click="sort(sectionIndex, $index)">Sort {list.sortState}</button>
+                <button type="button" class="btn btn-default" ng-click="sort(sectionIndex, $index)">Sort</button>
             </form>
             <div ng-show="list.Todos.length > 0">
                 <h4 ng-hide="completed() == list.Todos.length">Not Done</h4>
@@ -35,11 +35,7 @@
     </div>
 </div>
 
-<<<<<<< HEAD
-<div class="modal hide fade" id="addListModal">
-=======
 <div class="modal hide fade" id="addListModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
->>>>>>> c
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Modal header</h3>
