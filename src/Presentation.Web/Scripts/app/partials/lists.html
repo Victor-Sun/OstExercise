@@ -4,13 +4,14 @@
     </div>
 </div>
 
-<div class="row" ng-repeat="row in lists">
+<div class="row" ng-repeat="row in lists" ng-init="sectionIndex = $index">
     <div class="span6" ng-repeat="list in row.row">
         <div class="well todolist" ng-controller="ListCtrl">
             <h3 class="todolist-title">{{list.Name}} <i delete-list title="Click to delete list" class="icon-trash"></i></h3>
             <form name="addTodoForm" class="form-inline" ng-submit="addTodo(Title)">
                 <input type="text" ng-model="Title" placeholder="Pick up the milk" give-focus required />
                 <button type="submit" class="btn btn-success">Add Todo</button>
+                <button type="button" class="btn btn-default" ng-click="sort(sectionIndex, $index)">Sort {list.sortState}</button>
             </form>
             <div ng-show="list.Todos.length > 0">
                 <h4 ng-hide="completed() == list.Todos.length">Not Done</h4>
@@ -34,7 +35,7 @@
     </div>
 </div>
 
-<div class="model hide fade" id="addListModal">
+<div class="modal hide fade" id="addListModal">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3>Add New List</h3>
