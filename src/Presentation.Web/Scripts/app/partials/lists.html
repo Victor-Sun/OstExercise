@@ -34,10 +34,10 @@
     </div>
 </div>
 
-<div class="model hide fade" id="addListModal">
+<div class="modal hide fade" id="addListModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3>Add New List</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Modal header</h3>
     </div>
     <div class="modal-body">
         <form name="addListForm" class="form-horizontal" ng-submit="addList()">

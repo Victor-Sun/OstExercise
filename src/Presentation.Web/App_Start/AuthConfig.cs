@@ -24,7 +24,7 @@ namespace Presentation.Web
 
             //OAuthWebSecurity.RegisterFacebookClient(
             //    appId: "",
-            //    appSecret: "");
+            //    appSecret: ");
 
             //OAuthWebSecurity.RegisterGoogleClient();
         }
