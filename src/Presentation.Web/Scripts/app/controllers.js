@@ -17,9 +17,10 @@
         };
 
     }]).
-    controller("ListsCtrl", ["$scope", "TodoList", function($scope, TodoList) {
+    controller("ListsCtrl", ["$scope", "TodoList", 'orderByFilter', function ($scope, TodoList, orderBy) {
 
         var self = this;
+        //console.log('$localStorage', $localStorage);
 
         $scope.$on('list:deleted', function() {
             self.setLists();
@@ -35,18 +36,46 @@
                         buffer = [];
                     }
                 });
+
                 $scope.lists = items;
+
+                var rowIndex = 0, colIndex = 0;
+                items.forEach(function (aRow) {
+                    aRow.row.forEach(function (col) {
+                        var key = rowIndex.toString() + colIndex.toString();
+                        var reverse = window.localStorage.getItem(key) || 'false';
+                        reverse = reverse == 'true' ? true : false;
+                        
+                        $scope.lists[rowIndex].row[colIndex].Todos = orderBy($scope.lists[rowIndex].row[colIndex].Todos, 'Title', reverse);
+
+                        colIndex++;
+                    });
+
+                    rowIndex++;
+                });
             });
+
+
         };
 
         this.setLists();
-        
+
         $scope.addList = function() {
             var todo = new TodoList({ Name: $scope.Name });
             todo.$save(function () {
                 $scope.$broadcast('list:added');
                 self.setLists();
             });
+        };
+
+        $scope.sort = function (rowIndex, colIndex) {
+            var key = rowIndex.toString() + colIndex.toString();
+            var reverse = window.localStorage.getItem(key) || 'false';
+            reverse = reverse == 'true' ? true: false;
+            $scope.reverse = !reverse;
+            window.localStorage.setItem(key, $scope.reverse);            
+
+            $scope.lists[rowIndex].row[colIndex].Todos = orderBy($scope.lists[rowIndex].row[colIndex].Todos, 'Title', $scope.reverse);
         };
 
     }]).
